@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gift Page 6</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            background: linear-gradient(117deg, #ff6b81 0%, rgba(255, 99, 99, 0.8) 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: Arial, sans-serif;
+            overflow: hidden;
+        }
+
+        .container {
+            background: linear-gradient(145deg, rgba(255, 99, 132, 0.9), rgba(255, 150, 150, 0.95));
+            border-radius: 15px;
+            padding: 40px;
+            max-width: 700px;
+            width: 100%;
+            text-align: center;
+            position: relative;
+            box-shadow: 0 8px 16px rgba(255, 99, 132, 0.6);
+        }
+
+        h1 {
+            font-size: 2rem;
+            color: #fff;
+            margin-bottom: 20px;
+            padding: 15px;
+            background-color: rgba(255, 50, 90, 0.9);
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(255, 50, 70, 0.4);
+        }
+
+        .message-container {
+            font-size: 1.8rem;
+            color: #fff;
+            font-weight: bold;
+            margin-bottom: 30px;
+        }
+
+        .timer {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.9);
+            color: rgba(255, 50, 90, 0.9);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0 auto;
+            font-size: 3rem;
+            font-weight: bold;
+            box-shadow: 0 4px 8px rgba(255, 50, 70, 0.4);
+            animation: fadeIn 1.5s ease-in-out infinite;
+        }
+
+        @keyframes fadeIn {
+            0% {
+                transform: scale(1.5);
+                opacity: 0.5;
+            }
+            50% {
+                transform: scale(1);
+                opacity: 1;
+            }
+            100% {
+                transform: scale(0.9);
+                opacity: 0.8;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Here you go baibyyyy🤩</h1>
+        <div class="message-container">Wait 3 seconds pls mam🫠!!</div>
+        <div class="timer" id="timer" style="display: none;">3</div>
+    </div>
+
+    <script>
+        setTimeout(() => {
+            const timerElement = document.getElementById('timer');
+            timerElement.style.display = 'flex'; // Show timer
+            let countdown = 3;
+
+            const interval = setInterval(() => {
+                countdown--;
+                if (countdown >= 0) {
+                    timerElement.textContent = countdown;
+                } else {
+                    clearInterval(interval); // Stop the countdown
+                }
+            }, 1650); // 1.5-second interval for smoother animation
+        }, 2000); // Start timer after 2 seconds
+
+        // Redirect to Page 7 after 5 seconds
+        setTimeout(function () {
+            window.location.href = 'page7.html'; // Redirect to Page 7
+        }, 6500); // Wait 6.5 seconds (including the 2s delay)
+    </script>
+
+</body>
+</html>

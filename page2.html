@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enter Password</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            background: linear-gradient(117deg, #ff6b81 0%, rgba(255, 99, 99, 0.8) 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: Arial, sans-serif;
+            overflow: hidden;
+        }
+
+        .container {
+            background-color: rgba(255, 255, 255, 0.3);
+            border-radius: 15px;
+            padding: 30px;
+            max-width: 600px;
+            width: 100%;
+            text-align: center;
+            position: relative;
+            animation: fadeIn 1.5s ease;
+        }
+
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        h1 {
+            font-size: 1.8rem;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .password-input {
+            background-color: rgba(255, 255, 255, 0.6);
+            border: 2px solid #333;
+            border-radius: 10px;
+            color: #333;
+            font-size: 1.2rem;
+            padding: 12px;
+            width: 100%;
+            margin-bottom: 20px;
+        }
+
+        .password-input:focus {
+            outline: none;
+            border: 2px solid #ff4081;
+        }
+
+        /* Chat-like hint message */
+        .chat-container {
+            display: none;
+            position: absolute;
+            top: -50px;
+            right: 10px;
+            width: 250px;
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 10px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+            text-align: left;
+            font-size: 1rem;
+            color: #333;
+            animation: slideUp 0.3s ease;
+        }
+
+        @keyframes slideUp {
+            0% {
+                transform: translateY(10px);
+                opacity: 0;
+            }
+
+            100% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .hint-box {
+            background-color: rgba(255, 255, 255, 0.5);
+            border-radius: 10px;
+            padding: 8px 15px;
+            font-size: 0.9rem;
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .hint-box:hover {
+            transform: scale(1.05);
+            background-color: rgba(255, 255, 255, 0.7);
+        }
+
+        .submit-btn {
+            background-color: #ff4081;
+            border: none;
+            color: white;
+            font-size: 1.2rem;
+            padding: 10px;
+            border-radius: 10px;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 20px;
+            transition: background-color 0.3s ease;
+        }
+
+        .submit-btn:hover {
+            background-color: #e01e6b;
+        }
+
+        .wrong-password {
+            color: red;
+            font-size: 1.1rem;
+            margin-top: 20px;
+        }
+
+        .thank-you-message {
+            color: green;
+            font-size: 1.2rem;
+            margin-top: 20px;
+            font-weight: bold;
+        }
+
+        .wrong-password-animation {
+            animation: shake 0.5s ease-in-out;
+        }
+
+        @keyframes shake {
+            0% {
+                transform: translateX(0);
+            }
+
+            25% {
+                transform: translateX(-5px);
+            }
+
+            50% {
+                transform: translateX(5px);
+            }
+
+            75% {
+                transform: translateX(-5px);
+            }
+
+            100% {
+                transform: translateX(0);
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <h1>Enter Your Password To Continue</h1>
+        <div class="input-container">
+            <input type="password" id="passwordInput" class="password-input" placeholder="Enter Password">
+        </div>
+
+        <div id="hintBox" class="hint-box" onclick="showHint()">
+            HINT
+        </div>
+
+        <!-- Chat-like hint message -->
+        <div id="chatHint" class="chat-container">
+            <p>THE FIRST NICKNAME HE GAVE YOU (IT'S NOT GORU)</p>
+        </div>
+
+        <button id="submitBtn" class="submit-btn" onclick="checkPassword()">Submit</button>
+        <div id="errorMessage" class="wrong-password"></div>
+        <div id="thankYouMessage" class="thank-you-message"></div>
+    </div>
+    <script>
+        let hintClicked = false;  // Track whether the hint button is clicked
+
+        function showHint() {
+            hintClicked = true;
+            document.getElementById('chatHint').style.display = 'block';
+        }
+
+        function checkPassword() {
+            const password = document.getElementById('passwordInput').value.toLowerCase();
+            const errorMessage = document.getElementById('errorMessage');
+            const thankYouMessage = document.getElementById('thankYouMessage');
+
+            if (password === '') {
+                errorMessage.textContent = '';
+                thankYouMessage.textContent = '';
+                return;
+            }
+
+            // Check for "suchiii" as the exact match
+            if (password === 'suchiii') {
+                errorMessage.textContent = '';
+                thankYouMessage.textContent = "Thank you for remembering the number of 'i's in your name!";
+                setTimeout(() => {
+                    window.location.href = 'page3.html'; // Redirect to page3
+                }, 2000);
+            }
+            // Check for "suchi", "suchii", or "suchi" with more than 3 "i"s
+            else if (password.startsWith('suchi')) {
+                errorMessage.textContent = '';
+                thankYouMessage.textContent = "UMM THE NUMBER OF 'I' IS WRONG BUT IT'S OKAY, LET'S CONTINUE";
+                setTimeout(() => {
+                    window.location.href = 'page3.html'; // Redirect to page3
+                }, 2000);
+            }
+            // Invalid password
+            else {
+                thankYouMessage.textContent = ''; // Clear thank-you message
+                if (!hintClicked) {
+                    errorMessage.textContent = "OOPS THIS IS NOT THE PASSWORD, YOU CAN ASK FOR A HINT THERE";
+                } else {
+                    errorMessage.textContent = "REMEMBER THE FIRST NICKNAME HE GAVE YOU, IT STARTS WITH THE LETTER 'S'";
+                }
+                document.getElementById('passwordInput').classList.add('wrong-password-animation');
+            }
+        }
+
+        document.getElementById('passwordInput').addEventListener('input', function () {
+            document.getElementById('chatHint').style.display = 'none';
+            document.getElementById('errorMessage').textContent = '';
+            document.getElementById('thankYouMessage').textContent = '';
+            document.getElementById('passwordInput').classList.remove('wrong-password-animation');
+        });
+    </script>
+
+
+</body>
+
+</html>

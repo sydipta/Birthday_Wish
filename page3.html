@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feeling Page</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            background: linear-gradient(117deg, #ff6b81 0%, rgba(255, 99, 99, 0.8) 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: Arial, sans-serif;
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* Floating Love Emojis */
+        .emoji {
+            position: absolute;
+            font-size: 3rem;
+            opacity: 0; /* Hide the emojis initially */
+            animation: float 10s ease-in-out infinite, glow 1.5s ease-in-out infinite alternate;
+        }
+
+        /* Glowing effect */
+        @keyframes glow {
+            0% {
+                text-shadow: 0 0 10px red, 0 0 20px pink, 0 0 30px #ff007f;
+            }
+            100% {
+                text-shadow: 0 0 30px red, 0 0 50px pink, 0 0 70px #ff007f;
+            }
+        }
+
+        /* Random movement for each emoji */
+        @keyframes float1 {
+            0% {
+                transform: translateY(100vh) scale(0.5); /* Start from the bottom */
+                opacity: 1;
+            }
+            50% {
+                transform: translate(30vw, -20vh) scale(1.2);
+            }
+            100% {
+                transform: translate(-50vw, 50vh) scale(1);
+            }
+        }
+
+        @keyframes float2 {
+            0% {
+                transform: translateY(100vh) scale(0.5); /* Start from the bottom */
+                opacity: 1;
+            }
+            50% {
+                transform: translate(-40vw, -30vh) scale(1.2);
+            }
+            100% {
+                transform: translate(40vw, 40vh) scale(1);
+            }
+        }
+
+        @keyframes float3 {
+            0% {
+                transform: translateY(100vh) scale(0.5); /* Start from the bottom */
+                opacity: 1;
+            }
+            50% {
+                transform: translate(50vw, 20vh) scale(1.2);
+            }
+            100% {
+                transform: translate(-60vw, -40vh) scale(1);
+            }
+        }
+
+        @keyframes float4 {
+            0% {
+                transform: translateY(100vh) scale(0.5); /* Start from the bottom */
+                opacity: 1;
+            }
+            50% {
+                transform: translate(20vw, -50vh) scale(1.2);
+            }
+            100% {
+                transform: translate(-40vw, 10vh) scale(1);
+            }
+        }
+
+        @keyframes float5 {
+            0% {
+                transform: translateY(100vh) scale(0.5); /* Start from the bottom */
+                opacity: 1;
+            }
+            50% {
+                transform: translate(-30vw, 40vh) scale(1.2);
+            }
+            100% {
+                transform: translate(50vw, -30vh) scale(1);
+            }
+        }
+
+        /* Add animation-duration and animation-delay for each emoji */
+        .emoji1 {
+            animation-name: float1;
+            animation-duration: 12s;
+            animation-delay: 0.5s; /* Start after 0.5s */
+        }
+
+        .emoji2 {
+            animation-name: float2;
+            animation-duration: 14s;
+            animation-delay: 0.5s; /* Start after 0.5s */
+        }
+
+        .emoji3 {
+            animation-name: float3;
+            animation-duration: 16s;
+            animation-delay: 0.5s; /* Start after 0.5s */
+        }
+
+        .emoji4 {
+            animation-name: float4;
+            animation-duration: 18s;
+            animation-delay: 0.5s; /* Start after 0.5s */
+        }
+
+        .emoji5 {
+            animation-name: float5;
+            animation-duration: 20s;
+            animation-delay: 0.5s; /* Start after 0.5s */
+        }
+
+        .container {
+            background-color: rgba(255, 255, 255, 0.3);
+            border-radius: 15px;
+            padding: 30px;
+            max-width: 600px;
+            width: 100%;
+            text-align: center;
+            position: relative;
+            animation: fadeIn 1.5s ease;
+        }
+
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        h1 {
+            font-size: 1.8rem;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .option-container {
+            margin-top: 20px;
+        }
+
+        .select-option-box {
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 10px;
+            padding: 15px;
+            font-size: 1.2rem;
+            text-align: center;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+            margin-bottom: 15px;
+        }
+
+        .select-option-box:hover {
+            transform: scale(1.05);
+            background-color: rgba(255, 255, 255, 1);
+        }
+
+        .thank-you-message {
+            color: green;
+            font-size: 1.2rem;
+            margin-top: 20px;
+            font-weight: bold;
+        }
+
+        .urgent-message {
+            color: red;
+            font-size: 1.5rem;
+            margin-top: 20px;
+            font-weight: bold;
+        }
+
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Floating Emojis -->
+    <div class="emoji emoji1">💖</div>
+    <div class="emoji emoji2">😘</div>
+    <div class="emoji emoji3">💘</div>
+    <div class="emoji emoji4">😍</div>
+    <div class="emoji emoji5">💌</div>
+
+    <div class="container" id="mainContainer">
+        <h1>How Are You Feeling Right Now?</h1>
+        <div class="option-container" id="optionContainer">
+            <div class="select-option-box" onclick="handleOption(1)">Very happy and excited</div>
+            <div class="select-option-box" onclick="handleOption(2)">Okayish</div>
+            <div class="select-option-box" onclick="handleOption(3)">Not feeling great</div>
+        </div>
+        <div id="messagePopup" class="thank-you-message"></div>
+    </div>
+
+    <script>
+        function handleOption(option) {
+            const messagePopup = document.getElementById('messagePopup');
+            const optionContainer = document.getElementById('optionContainer');
+            const mainContainer = document.getElementById('mainContainer');
+
+            // Hide the question and options when option 3 is selected, but keep the message visible
+            if (option === 3) {
+                optionContainer.classList.add('hidden');
+                mainContainer.querySelector('h1').classList.add('hidden');
+            }
+
+            if (option === 1) {
+                messagePopup.textContent = "Wow Great to hear that mam, BTW I made PAYESH for you...Don't forget to give your feedback on the taste mam !!";
+                setTimeout(() => {
+                    window.location.href = 'page4.html'; // Navigate to page 4
+                }, 3500);
+            } else if (option === 2) {
+                messagePopup.textContent = "Meet me I have made PAYESH with my own hands and you will be happy to taste it !!";
+                setTimeout(() => {
+                    window.location.href = 'page4.html'; // Navigate to page 4
+                }, 3500);
+            } else if (option === 3) {
+                messagePopup.textContent = "Call me right now !!";
+                messagePopup.classList.add('urgent-message'); // Add red color for urgent message
+                setTimeout(() => {
+                    // Redirect to the browser homepage
+                    window.location.replace("about:blank"); // This will essentially "break" the site and go to the homepage
+                }, 3500); // Add a delay to allow the message to be seen before redirecting
+            }
+        }
+    </script>
+
+</body>
+
+</html>

@@ -216,23 +216,23 @@
                 thankYouMessage.textContent = "Thank you for remembering the number of 'i's in your name!";
                 setTimeout(() => {
                     window.location.href = 'page3.html'; // Redirect to page3
-                }, 2000);
+                }, 5000);
             }
             // Check for "suchi", "suchii", or "suchi" with more than 3 "i"s
             else if (password.startsWith('suchi')) {
                 errorMessage.textContent = '';
-                thankYouMessage.textContent = "UMM THE NUMBER OF 'I' IS WRONG BUT IT'S OKAY, LET'S CONTINUE";
+                thankYouMessage.textContent = "UMM THE NUMBER OF 'I' IS WRONG BUT IT'S OKAY, LET'S CONTINUE👉👉";
                 setTimeout(() => {
                     window.location.href = 'page3.html'; // Redirect to page3
-                }, 2000);
+                }, 5000);
             }
             // Invalid password
             else {
                 thankYouMessage.textContent = ''; // Clear thank-you message
                 if (!hintClicked) {
-                    errorMessage.textContent = "OOPS THIS IS NOT THE PASSWORD, YOU CAN ASK FOR A HINT THERE";
+                    errorMessage.textContent = "OOPS THIS IS NOT THE PASSWORD🤭, YOU CAN ASK FOR A HINT THERE💡";
                 } else {
-                    errorMessage.textContent = "REMEMBER THE FIRST NICKNAME HE GAVE YOU, IT STARTS WITH THE LETTER 'S'";
+                    errorMessage.textContent = "REMEMBER THE FIRST NICKNAME HE GAVE YOU, IT STARTS WITH THE LETTER 'S'😁";
                 }
                 document.getElementById('passwordInput').classList.add('wrong-password-animation');
             }
